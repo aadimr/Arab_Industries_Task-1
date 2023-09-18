@@ -15,7 +15,7 @@
 .mainContainer {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
     padding: 5rem;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .card {
-    width: 19vw;
+    width: 23vw;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -75,4 +75,27 @@
 
 .beforeDiscountPrice{
     text-decoration: line-through red;
+}
+
+.buttonContainerBtn{
+    width: 6rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 10rem;
+    cursor: pointer;
+    background-color: white;
+}
+
+.buttonContainer{
+    width: fit-content;
+    display: flex;
+    border-radius: 10rem;
+    border: 1px solid;
+    height: 1.8rem;
+    align-items: center;
+}
+
+.PlanDuration{
+    display: flex;
+    justify-content: flex-end;
 }

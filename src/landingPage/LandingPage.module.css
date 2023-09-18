@@ -1,0 +1,17 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.mainContainer{
+    display: flex;
+}
+
+.menu{
+    width: 10vw;
+}
+
+.SubscriptionPlans{
+    width: 90vw;
+}

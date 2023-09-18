@@ -3,7 +3,6 @@ import style from "../subscriptionPlans/SubscriptionPlans.module.css"
 import { PiUserBold } from 'react-icons/pi';
 import { TiCloudStorageOutline } from 'react-icons/ti';
 import { GrSupport } from "react-icons/gr";
-import { LiaCheckDoubleSolid } from "react-icons/lia";
 import { plans } from "./plans";
 import { freeAndEnterpriseBenefit } from "./freeAndEnterpriseBenefit";
 
@@ -15,6 +14,12 @@ function SubscriptionPlans() {
     return (
         <div className={style.mainContainer}>
             <h2>Choose a plan that's just right for you !</h2>
+            <div className={style.PlanDuration}>
+                <div className={style.buttonContainer}>
+                <Button name={"Monthly"} className={style.buttonContainerBtn} style={{backgroundColor:"#1aa5db"}}/>
+                <Button name={"Annually"} className={style.buttonContainerBtn}/>
+                </div>
+            </div>
             <div className={style.cardContainer}>
                 {
                     plans.map((ele, index) => (
