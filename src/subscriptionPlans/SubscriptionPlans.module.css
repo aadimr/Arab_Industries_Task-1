@@ -1,0 +1,78 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: 0px;
+}
+
+.btn {
+    width: 6rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 5rem;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardContainer2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card {
+    width: 19vw;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+.card2 {
+    width: 38vw;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+.card2LeftPart {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-right: 2rem;
+}
+
+.explore {
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.benefit {
+    line-height: 1.7rem;
+}
+
+.iconsWithBenefits {
+    display: flex;
+    gap: .5rem;
+}
+
+.beforeDiscountPrice{
+    text-decoration: line-through red;
+}
