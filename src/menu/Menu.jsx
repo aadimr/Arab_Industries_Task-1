@@ -19,7 +19,7 @@ function Menu() {
                 {
                     menuItems.map((ele, index) => (
                         <div key={index} className={style.itemsName} style={index === 0 ? { backgroundColor: "#93d8f3" } : null}>
-                            <p>{icons[index]}</p>
+                            <p className={style.iconsColor}>{icons[index]}</p>
                             <p>{ele}</p>
                         </div>
                     ))

@@ -9,9 +9,15 @@
 }
 
 .menu{
-    width: 10vw;
+    min-width: 10vw;
 }
 
 .SubscriptionPlans{
     width: 90vw;
+}
+
+@media (max-width: 991px) {
+    .SubscriptionPlans{
+        width: 100vw;
+    }
 }

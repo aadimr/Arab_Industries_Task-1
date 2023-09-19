@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.mainContainer{
+    display: flex;
+    align-items: center;
+    background-color: #effaff;
+    position: sticky;
+    top: 0px;
+}
+
+.logo{
+    width: 5rem;
+    height: 5rem;
+    margin-left: 4rem;
+}
