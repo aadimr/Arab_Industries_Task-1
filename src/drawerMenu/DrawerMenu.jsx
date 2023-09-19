@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
-import style from "./DrawerNavbar.module.css"
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -8,14 +6,19 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import { Link } from 'react-router-dom';
-import { pagesName } from './drawerNavbarLinkData';
-import { showUser } from "../store/UserSlice";
-import { useDispatch, useSelector } from "react-redux";
-import SearchPanel from '../header/searchPanel/SearchPanel';
+import { menuItems } from '../menu/menuItems';
+import { MdOutlineDashboard } from "react-icons/md"
+import { FaPuzzlePiece } from "react-icons/fa"
+import { AiOutlineWechat } from "react-icons/ai"
+import { BiSupport } from "react-icons/bi"
+import { FaCarrot } from "react-icons/fa"
+import { RiLogoutCircleLine } from "react-icons/ri"
+import ImageCard from '../imageCard/ImageCard';
+import style from "../drawerMenu/DrawerMenu.module.css"
 
 function DrawerNavbar() {
+
+    const menuItemsIcon = [<MdOutlineDashboard />, <FaCarrot />, <FaPuzzlePiece />, <AiOutlineWechat />, <BiSupport />]
 
     const [state, setState] = useState({
         left: false,
@@ -29,65 +32,51 @@ function DrawerNavbar() {
         setState({ ...state, [anchor]: open });
     };
 
-    const dispatch = useDispatch()
-
-    const loggedInuserName = JSON.parse(localStorage.getItem('details'));
-
-    const { users } = useSelector(state => state.user)
-
-    useEffect(() => {
-        dispatch(showUser())
-    }, [dispatch])
-
-    const showLoggedInUser = loggedInuserName ? users.find(ele => ele.id === loggedInuserName.id) : null
-
     const list = (anchor) => (
         <Box
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <List>
-                {pagesName.map((ele, index) => (
+            <ImageCard />
+            <List className={style.menuItems}>
+                {menuItems.map((ele, index) => (
                     <ListItem key={index} disablePadding>
-                        <Link to={ele.to} className={style.pages}>
-                            <ListItemButton>
-                                <ListItemIcon className={style.icon} sx={
-                                    (showLoggedInUser && index === 0) || (!showLoggedInUser && index === pagesName.length - 1)
-                                    ? { display: "none" } : null
-                                }>
-                                    <span>{ele.icon}</span>
-                                </ListItemIcon>
-                                {
-                                    showLoggedInUser && index === 0 ? <Link to={"/"} className={style.link}><span><AccountCircle sx={{fontSize:"2rem",marginTop:"5px"}}/></span>{showLoggedInUser.user_Name}</Link> :
-                                        <ListItemText sx={!showLoggedInUser && index === pagesName.length - 1 ? { display: "none" } : null}>
-                                            {ele.name}
-                                        </ListItemText>
-                                }
-                            </ListItemButton>
-                        </Link>
+                        <ListItemButton className='w-screen'>
+                            <ListItemIcon className={style.icons}>
+                                <span>{menuItemsIcon[index]}</span>
+                            </ListItemIcon>
+                            <ListItemText>
+                                {ele}
+                            </ListItemText>
+                        </ListItemButton>
                     </ListItem>
                 ))}
             </List>
+            <div className={style.logout}>
+                <RiLogoutCircleLine />
+                <p>Logout</p>
+            </div>
         </Box>
     )
 
     return (
-        <div className={style.wrapper}>
+        <div >
             {['left'].map((anchor) => (
                 <div key={anchor}>
-                    <MenuIcon onClick={toggleDrawer(anchor, true)} sx={{ marginLeft: "15px", fontSize: "2rem" }} />
+                    <div className='text-[#E8772E] h-14 cursor-pointer flex gap-[1rem]' onClick={toggleDrawer(anchor, true)}>
+                        <img src="https://media.licdn.com/dms/image/D560BAQGYXLGAepihVg/company-logo_200_200/0/1684513689890?e=2147483647&v=beta&t=z8gHTazvPqQNPihYAnIgIKa0f7dbN_foDHmOagNQpJM" alt="error" className={style.logo} />
+                    </div>
                     <Drawer
                         anchor={anchor}
                         open={state[anchor]}
                         onClose={toggleDrawer(anchor, false)}
-                        sx={{width:"1000px"}}
+                        sx={{ width: "1000px" }}
                     >
                         {list(anchor)}
                     </Drawer>
                 </div>
             ))}
-              <SearchPanel/>
         </div>
     );
 }

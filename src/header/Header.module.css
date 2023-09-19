@@ -10,10 +10,10 @@
     background-color: #effaff;
     position: sticky;
     top: 0px;
+    padding-left: 4rem;
 }
 
 .logo{
     width: 5rem;
     height: 5rem;
-    margin-left: 4rem;
 }
